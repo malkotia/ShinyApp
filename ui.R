@@ -12,7 +12,6 @@ library(shiny)
 # Define UI for application that draws a histogram
 
 shinyUI(fluidPage(
-  
   # Application title
   h1("Simulation of exponential distribution",align="center"),
   br(),
@@ -43,10 +42,16 @@ shinyUI(fluidPage(
                       value=0.2)
         ),  
     # Show a plot of the generated distribution
+    column(6, 
+           h3("How to Use?"),
+           helpText("slide Panels are provided for chossing varying values for parameters:", 
+            "1. No of simulations: A value can be choosen from 100-10000, defaulted to 1000",
+           "2. Sample size: A value can be chossen from 1-100, defaulted to 40",
+           "3. Rate Parameter: Lambda: varies from 0.1 to 0.4, defaulted to 0.2.", 
+           "The plot will refresh when any of these values are changed :",
+            "visit https://github.com/malkotia/ShinyApp for more details")),
     
-    column(12,
     mainPanel(
-    plotOutput("simulationPlot")
-    )
-  )
+      plotOutput("simulationPlot")
+      )
 )))

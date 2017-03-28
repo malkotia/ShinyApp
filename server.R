@@ -34,15 +34,14 @@ shinyServer(function(input, output) {
     ggtitle("Distribution of means of sample")+xlab("Mean of Sample")+ylab("Frequency")+theme(plot.title = element_text(size=20,hjust = 0.5),axis.title=element_text(size=18))
     xnormvalue <- seq(2,8,length=100)
     theorymean <-1/lambda
-    theorysd=theorymean/sqrt(40)
+    theorysd=theorymean/sqrt(n)
     ynormvalue <- dnorm(xnormvalue,mean=theorymean, sd=theorysd)
+    
     #scale y values
     ynormvalue <- nosim*ynormvalue*lambda
-    
     xynormvalue <- data.frame(cbind(xnormvalue,ynormvalue))
-    
     sampleplot <- sampleplot + geom_point(data = xynormvalue,aes(x = xynormvalue$xnormvalue, y = xynormvalue$ynormvalue)) 
     print(sampleplot)
+    })
     
-  })
 })
